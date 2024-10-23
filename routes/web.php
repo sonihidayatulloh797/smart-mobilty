@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 // LIVEWIRE
-use App\Http\Livewire\AdminDashboard;
-
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\AdminDashboard;
 use App\Http\Livewire\ManajemenKamera;
 use App\Http\Livewire\AnalisisKinerjaSimpang1;
 use App\Http\Livewire\AnalisisKinerjaSimpang2;

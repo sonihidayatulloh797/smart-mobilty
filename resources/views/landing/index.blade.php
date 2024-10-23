@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar with Profile Dropdown</title>
+    <title>Smart Mobility</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
         rel="stylesheet">
-
-
+    <link rel="stylesheet" href="{{ asset('assets/css/landing.css') }}">
     <style>
         /* Custom CSS for Hero Section */
         .hero {
@@ -54,6 +53,16 @@
             font-size: 1.2rem;
             padding: 0.75rem 2rem;
             margin: 0.5rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
         }
 
     </style>
@@ -104,17 +113,35 @@
     <section class="hero">
         <div class="container">
             <div class="hero-overlay"></div>
-            <div class="hero-content text-start">
-                <h1>Smart <span style="color: #FF0000">Mobility</span></h1>
-                <h1>Simulator</h1>
-                <p>Your journey to excellence starts here.</p>
-                <div>
-                    <a href="{{ route('admin-dashboard') }}" class="btn btn-danger">Dashboard</a>
-                    <a href="#" class="btn btn-success" style="margin-left: 20px">Mulai Tutorial</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hero-content text-start">
+                        <h1><span class="heading-effect">Smart</span> <span style="color: #FF0000">Mobility</span></h1>
+                        <h1>Simulator</h1>
+                        <p>Your journey to excellence starts here.</p>
+                        <div>
+                            <a href="{{ route('admin-dashboard') }}" class="btn button-dashboard">Dashboard</a>
+                            <a href="#" class="btn button-tutorial" style="margin-left: 20px">Mulai Tutorial</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="hero-content text-start mt-4">
+                        <h5>PERHATIAN :</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur. Faucibus rutrum feugiat eu massa hendrerit sed nibh quam eu. Nisl integer dignissim massa diam nam. Risus pretium in mattis egestas vulputate turpis pharetra urna elit. Blandit at felis tincidunt tristique gravida egestas dictum dignissim.
+                        </p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark">
+        <p>&copy; 2024 Smart Mobility Simulator. All Rights Reserved.</p>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

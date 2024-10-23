@@ -18,6 +18,26 @@
             <div class="col-lg-12">
                 <div class="row">
 
+                    {{-- @if(!empty($data))
+                        <ul>
+                            @foreach ($data as $item)
+                                <li>
+                                    <strong>Uploaded:</strong> {{ $item['uploaded'] }}<br>
+                                    <ul>
+                                        <li>Bicycle: {{ $item['bicycle'] }}</li>
+                                        <li>Car: {{ $item['car'] }}</li>
+                                        <li>Motorcycle: {{ $item['motorcycle'] }}</li>
+                                        <li>Bus: {{ $item['bus'] }}</li>
+                                        <li>Train: {{ $item['train'] }}</li>
+                                        <li>Truck: {{ $item['truck'] }}</li>
+                                    </ul>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <p>Tidak ada data yang tersedia.</p>
+                    @endif --}}
+
                     <!-- Reports -->
                     <div class="col-6">
                         <div class="card">
@@ -39,7 +59,82 @@
                                 <h5 class="card-title">Traffic Visualization</h5>
 
                                 <!-- Line Chart -->
-                                <canvas id="myChart"></canvas>
+                                @if (!empty($data))
+                                    <canvas id="myLineChart"></canvas>
+                                @else
+                                    <p>Tidak ada data</p>
+                                @endif
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        var ctx = document.getElementById('myLineChart').getContext('2d');
+                                        var myLineChart = new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                labels: @json($labels),
+                                                datasets: [
+                                                    {
+                                                        label: 'Bicycle',
+                                                        data: @json($bicycleData),
+                                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Car',
+                                                        data: @json($carData),
+                                                        borderColor: 'rgba(255, 99, 132, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Motorcycle',
+                                                        data: @json($motorcycleData),
+                                                        borderColor: 'rgba(54, 162, 235, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Bus',
+                                                        data: @json($busData),
+                                                        borderColor: 'rgba(255, 206, 86, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Train',
+                                                        data: @json($trainData),
+                                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Truck',
+                                                        data: @json($truckData),
+                                                        borderColor: 'rgba(153, 102, 255, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                // scales: {
+                                                //     y: {
+                                                //         beginAtZero: true
+                                                //     }
+                                                // },
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'bottom'
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
+
+                                {{-- <canvas id="myChart"></canvas>
                                 <script>
                                     const ctx = document.getElementById('myChart').getContext('2d');
                                     const myChart = new Chart(ctx, {
@@ -76,7 +171,7 @@
                                             }
                                         }
                                     });
-                                </script>
+                                </script> --}}
                                 <!-- End Line Chart -->
                             </div>
                         </div>
@@ -131,7 +226,80 @@
                             <div class="card-body">
                                 <h5 class="card-title">Intersection Performance Metrics</h5>
 
-                                <canvas id="barChart1"></canvas>
+                                @if (!empty($data))
+                                    <canvas id="intersectionChart"></canvas>
+                                @else
+                                    <p>Tidak ada data</p>
+                                @endif
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        var ctx = document.getElementById('intersectionChart').getContext('2d');
+                                        var myLineChart = new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                labels: @json($labels),
+                                                datasets: [
+                                                    {
+                                                        label: 'Bicycle',
+                                                        data: @json($bicycleData),
+                                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Car',
+                                                        data: @json($carData),
+                                                        borderColor: 'rgba(255, 99, 132, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Motorcycle',
+                                                        data: @json($motorcycleData),
+                                                        borderColor: 'rgba(54, 162, 235, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Bus',
+                                                        data: @json($busData),
+                                                        borderColor: 'rgba(255, 206, 86, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Train',
+                                                        data: @json($trainData),
+                                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    },
+                                                    {
+                                                        label: 'Truck',
+                                                        data: @json($truckData),
+                                                        borderColor: 'rgba(153, 102, 255, 1)',
+                                                        borderWidth: 2,
+                                                        fill: false,
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                // scales: {
+                                                //     y: {
+                                                //         beginAtZero: true
+                                                //     }
+                                                // },
+                                                plugins: {
+                                                    legend: {
+                                                        position: 'bottom'
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
                                 <!-- End Line Chart -->
                             </div>
                         </div>
@@ -158,7 +326,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Travel Time Analysis</h5>
 
-                                <canvas id="barChart2"></canvas>
+                                <canvas id="traveltimeChart"></canvas>
                                 <!-- End Line Chart -->
                             </div>
                         </div>
@@ -195,8 +363,8 @@
     });
 
     // Data dan konfigurasi untuk Bar Chart 2
-    const barChart2Ctx = document.getElementById('barChart2').getContext('2d');
-    const barChart2 = new Chart(barChart2Ctx, {
+    const traveltimeChart2Ctx = document.getElementById('traveltimeChart').getContext('2d');
+    const traveltimeChart = new Chart(traveltimeChart2Ctx, {
       type: 'bar',
       data: {
         labels: ['June', 'July', 'August', 'September', 'October'],

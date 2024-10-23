@@ -5,7 +5,7 @@
 
         <!-- Dashboard Nav -->
         <li class="nav-item">
-            <a class="nav-link" style="width: 100%" href="{{ route('dashboard') }}">
+            <a class="nav-link" style="width: 100%" href="{{ route('admin-dashboard') }}">
                 <i class="bi bi-grid" style="color: #390000;"></i>
                 <span style="color: #390000;">Dashboard</span>
             </a>

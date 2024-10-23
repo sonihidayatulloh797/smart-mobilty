@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.hero-content {
+    font-family: 'Inter' !important;
+}
+.hero-content .heading-effect {
+    background: linear-gradient(180deg, #FFFFFF 0%, #3b3b3b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.button-dashboard {
+    background-color: #940808;
+    font-family: 'Inter';
+    color: white;
+}
+.button-dashboard:hover {
+    background-color: #c91313;
+    font-family: 'Inter';
+    color: white;
+}
+.button-tutorial {
+    background-color: #009FA4;
+    font-family: 'Inter';
+    color: white;
+}
+.button-tutorial:hover {
+    background-color: #1ecdd3;
+    font-family: 'Inter';
+    color: white;
+}
