@@ -56,13 +56,26 @@
         }
 
         /* Footer Styles */
-        footer {
-            background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+        .footer {
+            position: absolute;
+            bottom: -50px;
+            /* Posisi footer di bagian bawah */
+            left: 50%;
+            /* Posisikan di tengah horizontal */
+            transform: translateX(-50%);
+            /* Menyesuaikan posisi ke tengah */
+            z-index: 2;
+            /* Di atas overlay */
             color: white;
-            padding: 1rem 0;
+            /* Warna teks footer */
+            background: none;
+            /* Latar belakang transparan */
+            padding: 10px;
+            /* Jarak di dalam footer */
             text-align: center;
-            position: relative;
+            /* Teks rata tengah */
             width: 100%;
+            /* Lebar footer */
         }
 
     </style>
@@ -121,7 +134,7 @@
                         <p>Your journey to excellence starts here.</p>
                         <div>
                             <a href="{{ route('admin-dashboard') }}" class="btn button-dashboard">Dashboard</a>
-                            <a href="#" class="btn button-tutorial" style="margin-left: 20px">Mulai Tutorial</a>
+                            <a href="{{ route('landing-page1') }}" class="btn button-tutorial" style="margin-left: 20px">Mulai Tutorial</a>
                         </div>
                     </div>
                 </div>
@@ -139,7 +152,7 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="bg-dark">
+    <footer class="footer">
         <p>&copy; 2024 Smart Mobility Simulator. All Rights Reserved.</p>
     </footer>
 

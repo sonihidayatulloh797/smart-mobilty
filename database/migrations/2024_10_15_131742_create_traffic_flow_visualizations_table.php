@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('traffic_flow_visualization', function (Blueprint $table) {
             $table->id();
-            $table->integer('timeframe');
-            $table->integer('car');
-            $table->integer('bus');
-            $table->integer('motocycle');
-            $table->integer('truck');
-            $table->integer('train');
-            $table->integer('bycycle');
+            $table->timestamp('uploaded'); // Untuk menyimpan data waktu yang diupload
+            $table->integer('bicycle')->default(0); // Jumlah bicycle
+            $table->integer('car')->default(0); // Jumlah car
+            $table->integer('motorcycle')->default(0); // Jumlah motorcycle
+            $table->integer('bus')->default(0); // Jumlah bus
+            $table->integer('train')->default(0); // Jumlah train
+            $table->integer('truck')->default(0); // Jumlah truck
             $table->timestamps();
         });
     }

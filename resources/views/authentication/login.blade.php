@@ -14,7 +14,7 @@
 
     <style>
         body {
-            background: url('https://s3-alpha-sig.figma.com/img/a47a/513a/1d6fb08c884c1944be0997ec09db1c8a?Expires=1730073600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=WdyI6vATr-oL9gOtLjTo7tJtuXvfHQid6j8Yw-laVZvJaL7AuIUHxk~VqJXlj2Mi5EdTHFXQU~AMlzTxac3E7AnU3hCh01Rh-bP9t540ZpVD~T4Qez8MktNAeBnYMyM~Eo4f1uDnklnetvnYYtjxJaSuBQ5WPEAnmO03CH7hh26gCUcO5-5Bznf7i08-o3J9nYPtDDJI-ZJ9hFHtEOEv~YmxCRYMRBjnBAiyt6wqg30DOX9WzebKxN9SCsPtQumpvsoUrGidVfHdZKFxv9gXb5e3~DD24ke-upSc~llDCVXAGQ6ZtdenpB~4jciJzi1~A~jdTqS2TVlrgtHsdQaFVA__') no-repeat center center fixed;
+            background: url('{{ asset('assets/img/Fase/hero.jpg') }}') no-repeat center center fixed;
             /* Path ke gambar background */
             background-size: cover;
             /* Agar gambar memenuhi seluruh layar */

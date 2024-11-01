@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
+use App\Models\TrafficFlowVisualization;
 
 class AdminDashboard extends Component
 {
@@ -18,31 +19,25 @@ class AdminDashboard extends Component
 
     public function mount()
     {
-        $this->fetchApiData();
+        $this->fetchDatabaseData();
         $this->prepareChartData();
     }
 
-    public function fetchApiData()
+    public function fetchDatabaseData()
     {
-        $response = Http::get('http://167.205.67.248:3001/count_viachle/');
-
-        if ($response->successful()) {
-            $this->data = $response->json();
-        } else {
-            $this->data = ['message' => 'Data gagal diambil'];
-        }
+        $this->data = TrafficFlowVisualization::all();
     }
 
     public function prepareChartData()
     {
-        foreach ($this->data as $item) {
-            $this->labels[] = $item['uploaded'];
-            $this->bicycleData[] = $item['bicycle'];
-            $this->carData[] = $item['car'];
-            $this->motorcycleData[] = $item['motorcycle'];
-            $this->busData[] = $item['bus'];
-            $this->trainData[] = $item['train'];
-            $this->truckData[] = $item['truck'];
+        foreach($this->data as $item) {
+            $this->labels[] = $item->uploaded;
+            $this->bicycleData[] = $item->bicycle;
+            $this->carData[] = $item->car;
+            $this->motorcycleData[] = $item->motorcycle;
+            $this->busData[] = $item->bus;
+            $this->trainData[] = $item->train;
+            $this->truckData[] = $item->truck;
         }
     }
 
@@ -50,4 +45,40 @@ class AdminDashboard extends Component
     {
         return view('livewire.admin-dashboard')->extends('layouts.apps');
     }
+
+    // Khusus Untuk API
+    // public function mount()
+    // {
+    //     $this->fetchApiData();
+    //     $this->prepareChartData();
+    // }
+
+    // public function fetchApiData()
+    // {
+    //     $response = Http::get('http://167.205.67.248:3001/count_viachle/');
+
+    //     if ($response->successful()) {
+    //         $this->data = $response->json();
+    //     } else {
+    //         $this->data = ['message' => 'Data gagal diambil'];
+    //     }
+    // }
+
+    // public function prepareChartData()
+    // {
+    //     foreach ($this->data as $item) {
+    //         $this->labels[] = $item['uploaded'];
+    //         $this->bicycleData[] = $item['bicycle'];
+    //         $this->carData[] = $item['car'];
+    //         $this->motorcycleData[] = $item['motorcycle'];
+    //         $this->busData[] = $item['bus'];
+    //         $this->trainData[] = $item['train'];
+    //         $this->truckData[] = $item['truck'];
+    //     }
+    // }
+
+    // public function render()
+    // {
+    //     return view('livewire.admin-dashboard')->extends('layouts.apps');
+    // }
 }

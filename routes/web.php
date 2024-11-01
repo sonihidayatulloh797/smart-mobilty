@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 // LIVEWIRE
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\AdminDashboard;
+use App\Http\Livewire\AdminDashboardKamera;
+use App\Http\Livewire\AdminIntersection;
+use App\Http\Livewire\AdminTrafficFlow;
 use App\Http\Livewire\ManajemenKamera;
 use App\Http\Livewire\AnalisisKinerjaSimpang1;
 use App\Http\Livewire\AnalisisKinerjaSimpang2;
@@ -21,8 +24,23 @@ Route::get('/landing-page', function () {
     return view('landing.index');
 })->name('landing-page');
 
+Route::get('/landing-page1', function () {
+    return view('landing.landing1');
+})->name('landing-page1');
+
+Route::get('/landing-page2', function () {
+    return view('landing.landing2');
+})->name('landing-page2');
+
+Route::get('/landing-page3', function () {
+    return view('landing.landing3');
+})->name('landing-page3');
+
 // Admin
 Route::get('/admin-dashboard', AdminDashboard::class)->name('admin-dashboard');
+Route::get('/admin-kamera', AdminDashboardKamera::class)->name('admin-kamera');
+Route::get('/admin-traffic-flow', AdminTrafficFlow::class)->name('admin-traffic-flow');
+Route::get('/admin-intersection', AdminIntersection::class)->name('admin-intersection');
 // End Admin
 
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
