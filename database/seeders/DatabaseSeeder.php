@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TrafficFlowVisualizationSeeder::class);
         $this->call(VehicleIntersectionSeeder::class);
+        $this->call(AnalisissaIKondisiLapanganSeeder::class);
+        $this->call(AnalisissaIIRecapitulationSeeder::class);
     }
 }

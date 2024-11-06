@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\AdminDashboard;
 use App\Http\Livewire\AdminDashboardKamera;
-use App\Http\Livewire\AdminIntersection;
+use App\Livewire\AdminIntersection;
 use App\Http\Livewire\AdminTrafficFlow;
 use App\Http\Livewire\ManajemenKamera;
 use App\Http\Livewire\AnalisisKinerjaSimpang1;

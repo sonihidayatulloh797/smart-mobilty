@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\HeaderIntersection;
+use App\Models\AnalisissaIInterKondisiLapangan;
+use App\Models\AnalisissaIIRecapitulation;
 
 class AdminIntersection extends Component
 {
@@ -16,6 +18,12 @@ class AdminIntersection extends Component
     public $periode;
 
     public $dataEntries = [];
+    public $kondisiLapanganEntries = [];
+
+    public function mount()
+    {
+        $this->kondisiLapanganEntries = AnalisissaIInterKondisiLapangan::all();
+    }
 
     public function submit()
     {
@@ -31,7 +39,18 @@ class AdminIntersection extends Component
         ]);
 
         // Menyimpan data ke dalam array
-        $this->dataEntries[] = [
+        // $this->dataEntries[] = [
+        //     'tanggal' => $this->tanggal,
+        //     'ditanganiOleh' => $this->ditanganiOleh,
+        //     'kota' => $this->kota,
+        //     'simpang' => $this->simpang,
+        //     'ukuranKota' => $this->ukuranKota,
+        //     'perihal' => $this->perihal,
+        //     'periode' => $this->periode,
+        // ];
+
+        // Menyimpan data ke database
+        HeaderIntersection::create([
             'tanggal' => $this->tanggal,
             'ditanganiOleh' => $this->ditanganiOleh,
             'kota' => $this->kota,
@@ -39,7 +58,7 @@ class AdminIntersection extends Component
             'ukuranKota' => $this->ukuranKota,
             'perihal' => $this->perihal,
             'periode' => $this->periode,
-        ];
+        ]);
 
         // Reset input setelah submit
         $this->reset(['tanggal', 'ditanganiOleh', 'kota', 'simpang', 'ukuranKota', 'perihal', 'periode']);
@@ -47,6 +66,14 @@ class AdminIntersection extends Component
 
     public function render()
     {
-        return view('livewire.admin-intersection')->extends('layouts.apps');
+        $dataHeaderIntersections = HeaderIntersection::all(); // Ambil data dari model HeaderIntersection
+        $dataKondisiLapangan = AnalisissaIInterKondisiLapangan::all();
+        $dataSAIIRecapitulation = AnalisissaIIRecapitulation::all();
+        return view('livewire.admin-intersection', [
+            'dataHeaderIntersections' => $dataHeaderIntersections,
+            'dataKondisiLapangan' => $dataKondisiLapangan,
+            'dataSAIIRecapitulation' => $dataSAIIRecapitulation
+        ])->extends('layouts.apps');
     }
 }
+
